@@ -45,6 +45,12 @@ namespace DateGenerator
             {
                 Console.WriteLine(input + input1 + "has 30 days.");
             }
+  
+            if (!int.TryParse(input1, out Month))
+                {
+                    Console.WriteLine("Invalid input. Please enter number");
+                    continue;
+                }
 
             if (Month < 1 || Month > 12)
                 {
@@ -52,12 +58,6 @@ namespace DateGenerator
                     continue;
                 }
 
-            if (!int.TryParse(input1, out Month))
-                {
-                    Console.WriteLine("Invalid input. Please enter number");
-                    continue;
-                }
-           
                 Console.WriteLine("Do you want to continue?");
             string input3 = Console.ReadLine();
 
