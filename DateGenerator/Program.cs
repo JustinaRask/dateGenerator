@@ -10,64 +10,72 @@ namespace DateGenerator
     {
         static void Main(string[] args)
         {
-            for (;;)
-            { 
-            Console.WriteLine("Please enter the year:");
-            string input = Console.ReadLine();
+            string yearInput = "";
             int Year = 1;
-            int.TryParse(input, out Year);
 
-            if (!int.TryParse(input, out Year))
-            {
-              Console.WriteLine("Invalid input. Please enter number");
-                    continue;
-            }
-            Console.WriteLine("Please enter month number (1-12):");
-            string input1 = Console.ReadLine();
+            string monthInput = "";
             int Month = 1;
-            int.TryParse(input1, out Month);
 
-            if (Month == 2)
+            while (true == true)
+            {
+                Console.WriteLine("Please enter the year:");
+                yearInput = Console.ReadLine();
+
+                if (!int.TryParse(yearInput, out Year))
+                {
+                    Console.WriteLine("Invalid input. Please enter Year number");
+                    break;
+                }
+
+                while (1 == 1)
+                {
+                    Console.WriteLine("Please enter month number (1-12):");
+                    monthInput = Console.ReadLine();
+
+                    if (!int.TryParse(monthInput, out Month))
+                    {
+                        Console.WriteLine("Invalid input. Please enter number");
+                        continue;
+                    }
+
+                    else if (Month < 1 || Month > 12)
+                    {
+                        Console.WriteLine("There is only 12 months in a year. Please provide correct input");
+                        continue;
+                    }
+                    break;
+                }
+
+
+                if (Month == 2)
+                {
                     if (Year % 4 == 0)
                     {
-                        Console.WriteLine(input  +  input1  +  "has 29 days");
+                        Console.WriteLine(yearInput + monthInput + "has 29 days");
                     }
                     else
                     {
-                        Console.WriteLine(input + input1 + "has 28 days");
+                        Console.WriteLine(yearInput + monthInput + "has 28 days");
                     }
-          
-            if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
-            {
-                Console.WriteLine(input + input1 + "has 31.");
-            }
-            else if (Month == 4 || Month == 6 || Month == 9 || Month == 11)
-            {
-                Console.WriteLine(input + input1 + "has 30 days.");
-            }
-  
-            if (!int.TryParse(input1, out Month))
-                {
-                    Console.WriteLine("Invalid input. Please enter number");
-                    continue;
                 }
 
-            if (Month < 1 || Month > 12)
+                else if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
                 {
-                    Console.WriteLine("There is only 12 months in a year. Please provide correct input");
-                    continue;
+                    Console.WriteLine(yearInput + monthInput + "has 31."); //string formattedOutput = string.Format ("{0}-{1} has {2} days", year, month, day)
+                }
+                else if (Month == 4 || Month == 6 || Month == 9 || Month == 11)
+                {
+                    Console.WriteLine(yearInput + monthInput + "has 30 days.");
                 }
 
                 Console.WriteLine("Do you want to continue?");
-            string input3 = Console.ReadLine();
+                string closingInput = Console.ReadLine();
 
-            if (input3 != "y")
-            {
-                break;
+                if (closingInput != "y")
+                {
+                    break;
+                }
             }
-            }
-           
-
         }
     }
 }
